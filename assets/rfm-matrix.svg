@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="RFM matrix: recency by frequency, with segments named by rule.">
+  <style>
+    .k{font:500 10px ui-monospace,Menlo,monospace;fill:#8892A6;letter-spacing:.16em}
+    .ax{font:500 10px ui-monospace,Menlo,monospace;fill:#8892A6}
+    .lg{font:600 12px ui-monospace,Menlo,monospace;fill:#3C4354}
+    .s{font:400 11px ui-monospace,Menlo,monospace;fill:#8892A6}
+    .big{font:700 16px 'Segoe UI',Helvetica,sans-serif;fill:#2456D6}
+    .cell{animation:pop .5s ease both;animation-delay:var(--d)}
+    @keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+    .champ{animation:pop .5s ease both,glow 2.6s ease-in-out infinite 1.6s;transform-box:fill-box;transform-origin:center}
+    @keyframes glow{0%,100%{filter:none}50%{filter:drop-shadow(0 0 6px rgba(36,86,214,.55))}}
+  </style>
+  <text class="k" x="28" y="26">RFM MATRIX &#183; EVERY CUT-OFF A PARAMETER, NOT A HARD-CODED BOUNDARY</text>
+  <text class="ax" x="108" y="176" text-anchor="end" transform="rotate(-90 108 170)">RECENCY &#8594;</text>
+  <text class="ax" x="228" y="286" text-anchor="middle">FREQUENCY &#8594;</text>
+    <rect class="cell" x="120" y="54" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:0ms"/>
+    <rect class="cell" x="164" y="54" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:28ms"/>
+    <rect class="cell" x="208" y="54" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:56ms"/>
+    <rect class="cell champ" x="252" y="54" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:84ms"/>
+    <rect class="cell champ" x="296" y="54" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:112ms"/>
+    <rect class="cell" x="120" y="98" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:140ms"/>
+    <rect class="cell" x="164" y="98" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:168ms"/>
+    <rect class="cell" x="208" y="98" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:196ms"/>
+    <rect class="cell champ" x="252" y="98" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:224ms"/>
+    <rect class="cell champ" x="296" y="98" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:252ms"/>
+    <rect class="cell" x="120" y="142" width="39" height="39" rx="6" fill="#8892A6" fill-opacity=".18" style="--d:280ms"/>
+    <rect class="cell" x="164" y="142" width="39" height="39" rx="6" fill="#8892A6" fill-opacity=".18" style="--d:308ms"/>
+    <rect class="cell" x="208" y="142" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:336ms"/>
+    <rect class="cell" x="252" y="142" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:364ms"/>
+    <rect class="cell" x="296" y="142" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:392ms"/>
+    <rect class="cell" x="120" y="186" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:420ms"/>
+    <rect class="cell" x="164" y="186" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:448ms"/>
+    <rect class="cell" x="208" y="186" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:476ms"/>
+    <rect class="cell" x="252" y="186" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:504ms"/>
+    <rect class="cell" x="296" y="186" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:532ms"/>
+    <rect class="cell" x="120" y="230" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:560ms"/>
+    <rect class="cell" x="164" y="230" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:588ms"/>
+    <rect class="cell" x="208" y="230" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:616ms"/>
+    <rect class="cell" x="252" y="230" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:644ms"/>
+    <rect class="cell" x="296" y="230" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:672ms"/>
+    <rect x="420" y="60" width="14" height="14" rx="4" fill="#2456D6" fill-opacity=".9"/><text class="lg" x="444" y="72">Champions</text>
+    <rect x="420" y="90" width="14" height="14" rx="4" fill="#2456D6" fill-opacity=".45"/><text class="lg" x="444" y="102">Loyal</text>
+    <rect x="420" y="120" width="14" height="14" rx="4" fill="#1F7A5A" fill-opacity=".4"/><text class="lg" x="444" y="132">Potential</text>
+    <rect x="420" y="150" width="14" height="14" rx="4" fill="#C2703A" fill-opacity=".45"/><text class="lg" x="444" y="162">At risk</text>
+    <rect x="420" y="180" width="14" height="14" rx="4" fill="#C0392B" fill-opacity=".35"/><text class="lg" x="444" y="192">Need attn</text>
+  <text class="big" x="420" y="214">Champions spend 39% more</text>
+  <text class="s" x="420" y="234">at the same purchase frequency &#8212; so the lever</text>
+  <text class="s" x="420" y="250">is basket size, not visit count.</text>
+</svg>

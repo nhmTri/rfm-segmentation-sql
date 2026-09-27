@@ -3,6 +3,8 @@
 ![SQL](https://img.shields.io/badge/SQL-CTEs%20·%20window%20functions-2456D6?style=flat-square&logo=postgresql&logoColor=white)
 ![Parameterised](https://img.shields.io/badge/cut--offs-parameterised-1F7A5A?style=flat-square)
 ![Runnable](https://img.shields.io/badge/runs-out%20of%20the%20box-1F7A5A?style=flat-square)
+[![sql](https://github.com/nhmTri/rfm-segmentation-sql/actions/workflows/sql-tests.yml/badge.svg)](https://github.com/nhmTri/rfm-segmentation-sql/actions/workflows/sql-tests.yml)
+![Licence](https://img.shields.io/badge/licence-MIT-8892A6?style=flat-square)
 
 <img src="assets/rfm-matrix.svg" alt="RFM matrix with named segments" width="100%">
 
@@ -39,11 +41,20 @@ orders ──▶ customer_base ──▶ rfm_raw ──▶ rfm_scored ──▶ 
 ## Run it
 
 ```bash
-psql -f sql/rfm.sql          # PostgreSQL
-# or paste into BigQuery / MySQL 8 / SQL Server — window functions only, no vendor extensions
+make run     # load the synthetic sample, print the segments
+make test    # run the query and diff against tests/expected_segments.csv
 ```
 
-Sample schema and synthetic rows in `sql/00_sample_data.sql`. No client data is used anywhere in this repository.
+Or directly:
+
+```bash
+psql -f sql/00_sample_data.sql
+psql -f sql/rfm.sql
+```
+
+Window functions only, no vendor extensions — it ports to BigQuery, MySQL 8 and SQL Server with minimal changes.
+
+Every push runs the query against a real PostgreSQL 16 in GitHub Actions and diffs the result against `tests/expected_segments.csv`. If the logic drifts, the badge above goes red. Data provenance: [`data/README.md`](data/README.md).
 
 ---
 

@@ -1,5 +1,10 @@
 -- Minimal synthetic schema so rfm.sql runs out of the box. No real data.
-CREATE TABLE IF NOT EXISTS orders (
+-- Re-runnable on purpose: a reviewer who runs `make test` twice should not
+-- meet a duplicate-key error on the second go.
+SET client_min_messages = warning;
+DROP TABLE IF EXISTS orders CASCADE;
+
+CREATE TABLE orders (
     order_id     BIGINT PRIMARY KEY,
     customer_id  BIGINT      NOT NULL,
     order_date   DATE        NOT NULL,

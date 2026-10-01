@@ -5,6 +5,7 @@
 ![Runnable](https://img.shields.io/badge/runs-out%20of%20the%20box-1F7A5A?style=flat-square)
 [![sql](https://github.com/nhmTri/rfm-segmentation-sql/actions/workflows/sql-tests.yml/badge.svg)](https://github.com/nhmTri/rfm-segmentation-sql/actions/workflows/sql-tests.yml)
 [![live demo](https://img.shields.io/badge/live%20demo-drag%20the%20cut--offs-184F95?style=flat-square&logo=githubpages&logoColor=white)](https://nhmtri.github.io/rfm-segmentation-sql/)
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in-Codespaces-184F95?style=flat-square&logo=github&logoColor=white)](https://codespaces.new/nhmTri/rfm-segmentation-sql?quickstart=1)
 ![Licence](https://img.shields.io/badge/licence-MIT-8892A6?style=flat-square)
 
 <img src="assets/rfm-matrix.svg" alt="RFM matrix with named segments" width="100%">
@@ -44,6 +45,22 @@ orders ──▶ customer_base ──▶ rfm_raw ──▶ rfm_scored ──▶ 
 | Potential | R 4–5, F 1–2 | Second-purchase nudge |
 | At risk | R 1–2, F 3–5 | Win-back before the gap closes |
 | Need attention | R 1–2, F 1–2, M 1–2 | Engage too little for discounts to land — build trust, not price cuts |
+
+## Run it in your browser, nothing installed
+
+[![Open in GitHub Codespaces](https://img.shields.io/badge/Open%20in-Codespaces-184F95?style=flat-square&logo=github&logoColor=white)](https://codespaces.new/nhmTri/rfm-segmentation-sql?quickstart=1)
+
+That button opens this repository in a container with **PostgreSQL 16 already running and the
+sample already loaded** — the same shape as the CI job. When the terminal appears:
+
+```bash
+make test     # runs the query and diffs it against the expected segments
+make run      # load the sample again and print the result
+psql          # poke at the tables yourself
+```
+
+Re-runnable: the sample loader drops and rebuilds its tables, so `make test` gives the same
+answer the fifth time as the first.
 
 ## Run it
 

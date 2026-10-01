@@ -1,0 +1,24 @@
+{
+  "name": "RFM segmentation",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/rfm-segmentation-sql",
+  "remoteEnv": {
+    "PGHOST": "db",
+    "PGPORT": "5432",
+    "PGUSER": "postgres",
+    "PGPASSWORD": "postgres",
+    "PGDATABASE": "rfm"
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postAttachCommand": "bash .devcontainer/welcome.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-ossdata.vscode-pgsql",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg"
+      ]
+    }
+  }
+}

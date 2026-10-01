@@ -1,49 +1,118 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" role="img" aria-label="RFM matrix: recency by frequency, with segments named by rule.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 376" width="1000" height="376" role="img" aria-label="A five by five recency and frequency grid colouring in cell by cell into five customer segments, beside the share of revenue each segment carries." xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo4MzU1OWNkMC0yNTQzLTRkMGItOTdmYi1mMjg0OWEwMDg5MmQAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaFEQb+ckVJge8OYbAQ1BI3IAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDo5MDA4N2NkNy1kMjgxLTQ2OTYtYjA0Mi05YzMwM2YzMjJmN2NscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo6QKFnk3V0ECAW6MmjZ+NPAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg98y8Y3afHHF/inkHQjOsibhC66uBmH0dISqnP4s+VBKkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaNZjaKphebUcrtFgUqdNdioAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYICf0bipVo1LSMZ8tdCyx9tEPb9vJelCyR37nF6Vy2n+QZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GQFDZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjgzNTU5Y2QwLTI1NDMtNGQwYi05N2ZiLWYyODQ5YTAwODkyZC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmRlZTJiNmQ4LWNiNzQtNDE4ZS04MjMyLThlOTY5Zjc2NjUzZXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCD3zLxjdp8ccX+KeQdCM6yJuELrq4GYfR0hKqc/iz5UEqJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggd3+oHQFD4OLhT7X/g4PvFa7cZ4OcLLbxaeTdCxn2sGaiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggY0Bh5DAKZ75Jmm3YnB72L9eFa7O74mj0nUVk6EVRIit0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQEiJ/wdJZQboKjYN4SDl6JIllH8FooqD+Hi5soSttS936CgpULLmyUTIpZBXYfvMGnyeNt1nsYsUvwZtJBoqn9I=</c2pa:manifest></metadata>
   <style>
-    .k{font:500 10px ui-monospace,Menlo,monospace;fill:#8892A6;letter-spacing:.16em}
-    .ax{font:500 10px ui-monospace,Menlo,monospace;fill:#8892A6}
-    .lg{font:600 12px ui-monospace,Menlo,monospace;fill:#3C4354}
-    .s{font:400 11px ui-monospace,Menlo,monospace;fill:#8892A6}
-    .big{font:700 16px 'Segoe UI',Helvetica,sans-serif;fill:#2456D6}
-    .cell{animation:pop .5s ease both;animation-delay:var(--d)}
-    @keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
-    .champ{animation:pop .5s ease both,glow 2.6s ease-in-out infinite 1.6s;transform-box:fill-box;transform-origin:center}
-    @keyframes glow{0%,100%{filter:none}50%{filter:drop-shadow(0 0 6px rgba(36,86,214,.55))}}
+    :root{color-scheme:light dark}
+    .ttl{font:700 13px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1B2030;letter-spacing:.08em}
+    .tag{font:600 9px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8892A6;letter-spacing:.18em}
+    .ax{font:500 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8892A6}
+    .lg{font:600 11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1B2030}
+    .pc{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace}
+    .sub{font:400 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8892A6}
+    .kw{font:500 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2456D6}
+    .cd{font:500 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8892A6}
+    .hl{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#1F7A5A;letter-spacing:.14em}
+
+    .cell{transform-box:fill-box;transform-origin:center;opacity:0;
+          animation:pop .5s cubic-bezier(.34,1.3,.64,1) forwards, breathe 6s ease-in-out 2.6s infinite}
+    @keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:.88;transform:scale(1)}}
+    @keyframes breathe{0%,100%{opacity:.88}50%{opacity:.70}}
+
+    .gb{transform-box:fill-box;transform-origin:left;transform:scaleX(0);
+        animation:grow .7s cubic-bezier(.2,.7,.3,1) forwards}
+    @keyframes grow{to{transform:scaleX(1)}}
+
+    .ring{fill:none;stroke:#1F7A5A;stroke-width:2.5;
+          stroke-dasharray:420;stroke-dashoffset:420;
+          animation:draw 1.1s ease-out 1.9s forwards, glow 3.4s ease-in-out 3.2s infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes glow{0%,100%{stroke-opacity:1}50%{stroke-opacity:.3}}
+
+    .fade{opacity:0;animation:fade .6s ease-out 2.6s forwards}
+    @keyframes fade{to{opacity:1}}
+
+    @media (prefers-reduced-motion:reduce){
+      .cell{opacity:.88;animation:none}
+      .gb{transform:scaleX(1);animation:none}
+      .ring{stroke-dashoffset:0;animation:none}
+      .fade{opacity:1;animation:none}
+    }
+    @media (prefers-color-scheme:dark){
+      .ttl,.lg{fill:#E8ECF4} .ax,.sub,.tag{fill:#7F8AA0}
+    }
   </style>
-  <text class="k" x="28" y="26">RFM MATRIX &#183; EVERY CUT-OFF A PARAMETER, NOT A HARD-CODED BOUNDARY</text>
-  <text class="ax" x="108" y="176" text-anchor="end" transform="rotate(-90 108 170)">RECENCY &#8594;</text>
-  <text class="ax" x="228" y="286" text-anchor="middle">FREQUENCY &#8594;</text>
-    <rect class="cell" x="120" y="54" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:0ms"/>
-    <rect class="cell" x="164" y="54" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:28ms"/>
-    <rect class="cell" x="208" y="54" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:56ms"/>
-    <rect class="cell champ" x="252" y="54" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:84ms"/>
-    <rect class="cell champ" x="296" y="54" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:112ms"/>
-    <rect class="cell" x="120" y="98" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:140ms"/>
-    <rect class="cell" x="164" y="98" width="39" height="39" rx="6" fill="#1F7A5A" fill-opacity=".4" style="--d:168ms"/>
-    <rect class="cell" x="208" y="98" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:196ms"/>
-    <rect class="cell champ" x="252" y="98" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:224ms"/>
-    <rect class="cell champ" x="296" y="98" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".9" style="--d:252ms"/>
-    <rect class="cell" x="120" y="142" width="39" height="39" rx="6" fill="#8892A6" fill-opacity=".18" style="--d:280ms"/>
-    <rect class="cell" x="164" y="142" width="39" height="39" rx="6" fill="#8892A6" fill-opacity=".18" style="--d:308ms"/>
-    <rect class="cell" x="208" y="142" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:336ms"/>
-    <rect class="cell" x="252" y="142" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:364ms"/>
-    <rect class="cell" x="296" y="142" width="39" height="39" rx="6" fill="#2456D6" fill-opacity=".45" style="--d:392ms"/>
-    <rect class="cell" x="120" y="186" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:420ms"/>
-    <rect class="cell" x="164" y="186" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:448ms"/>
-    <rect class="cell" x="208" y="186" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:476ms"/>
-    <rect class="cell" x="252" y="186" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:504ms"/>
-    <rect class="cell" x="296" y="186" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:532ms"/>
-    <rect class="cell" x="120" y="230" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:560ms"/>
-    <rect class="cell" x="164" y="230" width="39" height="39" rx="6" fill="#C0392B" fill-opacity=".35" style="--d:588ms"/>
-    <rect class="cell" x="208" y="230" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:616ms"/>
-    <rect class="cell" x="252" y="230" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:644ms"/>
-    <rect class="cell" x="296" y="230" width="39" height="39" rx="6" fill="#C2703A" fill-opacity=".45" style="--d:672ms"/>
-    <rect x="420" y="60" width="14" height="14" rx="4" fill="#2456D6" fill-opacity=".9"/><text class="lg" x="444" y="72">Champions</text>
-    <rect x="420" y="90" width="14" height="14" rx="4" fill="#2456D6" fill-opacity=".45"/><text class="lg" x="444" y="102">Loyal</text>
-    <rect x="420" y="120" width="14" height="14" rx="4" fill="#1F7A5A" fill-opacity=".4"/><text class="lg" x="444" y="132">Potential</text>
-    <rect x="420" y="150" width="14" height="14" rx="4" fill="#C2703A" fill-opacity=".45"/><text class="lg" x="444" y="162">At risk</text>
-    <rect x="420" y="180" width="14" height="14" rx="4" fill="#C0392B" fill-opacity=".35"/><text class="lg" x="444" y="192">Need attn</text>
-  <text class="big" x="420" y="214">Champions spend 39% more</text>
-  <text class="s" x="420" y="234">at the same purchase frequency &#8212; so the lever</text>
-  <text class="s" x="420" y="250">is basket size, not visit count.</text>
+
+  <text class="tag" x="36" y="32">RECENCY  x  FREQUENCY   ·   EVERY CUT-OFF IS A PARAMETER</text>
+
+  <rect class="cell" x="86" y="58" width="38" height="38" rx="5" fill="#C0392B" style="animation-delay:0.00s"/>
+  <rect class="cell" x="130" y="58" width="38" height="38" rx="5" fill="#C0392B" style="animation-delay:0.07s"/>
+  <rect class="cell" x="174" y="58" width="38" height="38" rx="5" fill="#2456D6" style="animation-delay:0.14s"/>
+  <rect class="cell" x="218" y="58" width="38" height="38" rx="5" fill="#1F7A5A" style="animation-delay:0.21s"/>
+  <rect class="cell" x="262" y="58" width="38" height="38" rx="5" fill="#1F7A5A" style="animation-delay:0.28s"/>
+  <rect class="cell" x="86" y="102" width="38" height="38" rx="5" fill="#C0392B" style="animation-delay:0.07s"/>
+  <rect class="cell" x="130" y="102" width="38" height="38" rx="5" fill="#C0392B" style="animation-delay:0.14s"/>
+  <rect class="cell" x="174" y="102" width="38" height="38" rx="5" fill="#2456D6" style="animation-delay:0.21s"/>
+  <rect class="cell" x="218" y="102" width="38" height="38" rx="5" fill="#1F7A5A" style="animation-delay:0.28s"/>
+  <rect class="cell" x="262" y="102" width="38" height="38" rx="5" fill="#1F7A5A" style="animation-delay:0.35s"/>
+  <rect class="cell" x="86" y="146" width="38" height="38" rx="5" fill="#C0392B" style="animation-delay:0.14s"/>
+  <rect class="cell" x="130" y="146" width="38" height="38" rx="5" fill="#C0392B" style="animation-delay:0.21s"/>
+  <rect class="cell" x="174" y="146" width="38" height="38" rx="5" fill="#C2703A" style="animation-delay:0.28s"/>
+  <rect class="cell" x="218" y="146" width="38" height="38" rx="5" fill="#2456D6" style="animation-delay:0.35s"/>
+  <rect class="cell" x="262" y="146" width="38" height="38" rx="5" fill="#2456D6" style="animation-delay:0.42s"/>
+  <rect class="cell" x="86" y="190" width="38" height="38" rx="5" fill="#C2703A" style="animation-delay:0.21s"/>
+  <rect class="cell" x="130" y="190" width="38" height="38" rx="5" fill="#C2703A" style="animation-delay:0.28s"/>
+  <rect class="cell" x="174" y="190" width="38" height="38" rx="5" fill="#C2703A" style="animation-delay:0.35s"/>
+  <rect class="cell" x="218" y="190" width="38" height="38" rx="5" fill="#6B8FD6" style="animation-delay:0.42s"/>
+  <rect class="cell" x="262" y="190" width="38" height="38" rx="5" fill="#6B8FD6" style="animation-delay:0.49s"/>
+  <rect class="cell" x="86" y="234" width="38" height="38" rx="5" fill="#C2703A" style="animation-delay:0.28s"/>
+  <rect class="cell" x="130" y="234" width="38" height="38" rx="5" fill="#C2703A" style="animation-delay:0.35s"/>
+  <rect class="cell" x="174" y="234" width="38" height="38" rx="5" fill="#6B8FD6" style="animation-delay:0.42s"/>
+  <rect class="cell" x="218" y="234" width="38" height="38" rx="5" fill="#6B8FD6" style="animation-delay:0.49s"/>
+  <rect class="cell" x="262" y="234" width="38" height="38" rx="5" fill="#6B8FD6" style="animation-delay:0.56s"/>
+
+  <text class="ax" x="74" y="82" text-anchor="end">5</text>
+  <text class="ax" x="74" y="126" text-anchor="end">4</text>
+  <text class="ax" x="74" y="170" text-anchor="end">3</text>
+  <text class="ax" x="74" y="214" text-anchor="end">2</text>
+  <text class="ax" x="74" y="258" text-anchor="end">1</text>
+  <text class="ax" x="105" y="288" text-anchor="middle">1</text>
+  <text class="ax" x="149" y="288" text-anchor="middle">2</text>
+  <text class="ax" x="193" y="288" text-anchor="middle">3</text>
+  <text class="ax" x="237" y="288" text-anchor="middle">4</text>
+  <text class="ax" x="281" y="288" text-anchor="middle">5</text>
+  <text class="ax" x="34" y="168" transform="rotate(-90 34 168)" text-anchor="middle">FREQUENCY</text>
+  <text class="ax" x="193" y="308" text-anchor="middle">RECENCY</text>
+
+  <rect class="ring" x="213" y="53" width="92" height="92" rx="7"/>
+  <text class="hl fade" x="213" y="44">CHAMPIONS</text>
+
+  <text class="tag" x="430" y="44">SHARE OF REVENUE</text>
+  <text class="lg" x="430" y="66">Loyal</text>
+  <rect x="430" y="72" width="200" height="7" rx="3.5" fill="#2456D6" opacity=".13"/>
+  <rect class="gb" x="430" y="72" width="194" height="7" rx="3.5" fill="#2456D6" style="animation-delay:0.90s"/>
+  <text class="pc" x="638" y="79" fill="#2456D6">44.2%</text>
+  <text class="lg" x="430" y="102">Champions</text>
+  <rect x="430" y="108" width="200" height="7" rx="3.5" fill="#1F7A5A" opacity=".13"/>
+  <rect class="gb" x="430" y="108" width="174" height="7" rx="3.5" fill="#1F7A5A" style="animation-delay:1.02s"/>
+  <text class="pc" x="638" y="115" fill="#1F7A5A">39.5%</text>
+  <text class="lg" x="430" y="138">At risk</text>
+  <rect x="430" y="144" width="200" height="7" rx="3.5" fill="#C0392B" opacity=".13"/>
+  <rect class="gb" x="430" y="144" width="36" height="7" rx="3.5" fill="#C0392B" style="animation-delay:1.14s"/>
+  <text class="pc" x="638" y="151" fill="#C0392B">8.1%</text>
+  <text class="lg" x="430" y="174">Potential</text>
+  <rect x="430" y="180" width="200" height="7" rx="3.5" fill="#6B8FD6" opacity=".13"/>
+  <rect class="gb" x="430" y="180" width="26" height="7" rx="3.5" fill="#6B8FD6" style="animation-delay:1.26s"/>
+  <text class="pc" x="638" y="187" fill="#6B8FD6">5.9%</text>
+  <text class="lg" x="430" y="210">Need attention</text>
+  <rect x="430" y="216" width="200" height="7" rx="3.5" fill="#C2703A" opacity=".13"/>
+  <rect class="gb" x="430" y="216" width="10" height="7" rx="3.5" fill="#C2703A" style="animation-delay:1.38s"/>
+  <text class="pc" x="638" y="223" fill="#C2703A">2.3%</text>
+
+
+  <rect x="430" y="258" width="2" height="60" fill="#2456D6" opacity=".35"/>
+  <text class="tag" x="444" y="250">THE WHOLE SCORING STEP · NO HARD-CODED BUCKETS</text>
+  <text class="cd" x="444" y="274"><tspan class="kw">ntile</tspan>(5) over (order by last_order_at)  r</text>
+  <text class="cd" x="444" y="292"><tspan class="kw">ntile</tspan>(5) over (order by orders)         f</text>
+  <text class="cd" x="444" y="310"><tspan class="kw">ntile</tspan>(5) over (order by revenue)        m</text>
+
+  <text class="ttl" x="36" y="334">CHAMPIONS SPEND 39% MORE AT THE SAME PURCHASE FREQUENCY</text>
+  <text class="sub" x="36" y="354">That is the finding the split exists to surface — the top two bands carry 83% of revenue between them.</text>
 </svg>

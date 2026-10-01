@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RFM segmentation — live demo</title>
+<meta name="description" content="Move the cut-offs and watch the segments, the revenue split and the SQL change together. Synthetic data, real query.">
+<style>
+  :root{
+    color-scheme: light;
+    --surface:#fcfcfb; --plane:#f4f4f1; --card:#ffffff;
+    --ink:#0b0b0b; --ink-2:#52514e; --muted:#6f6d68;
+    --grid:#e1e0d9; --line:#c3c2b7; --ring:rgba(11,11,11,.10);
+    --s1:#184f95;  /* champions  */
+    --s2:#5598e7;  /* loyal      */
+    --s3:#898781;  /* potential  */
+    --s4:#e8736f;  /* need attn  */
+    --s5:#b02e2d;  /* at risk    */
+    --accent:#184f95;
+    --code:#f7f7f4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme: dark;
+      --surface:#1a1a19; --plane:#0d0d0d; --card:#1f1f1e;
+      --ink:#ffffff; --ink-2:#c3c2b7; --muted:#9a9890;
+      --grid:#2c2c2a; --line:#383835; --ring:rgba(255,255,255,.12);
+      --s1:#2a78d6; --s2:#86b6ef; --s3:#9a9890; --s4:#f0968f; --s5:#d4423f;
+      --accent:#5598e7;
+      --code:#141413;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --surface:#1a1a19; --plane:#0d0d0d; --card:#1f1f1e;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#9a9890;
+    --grid:#2c2c2a; --line:#383835; --ring:rgba(255,255,255,.12);
+    --s1:#2a78d6; --s2:#86b6ef; --s3:#9a9890; --s4:#f0968f; --s5:#d4423f;
+    --accent:#5598e7;
+    --code:#141413;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--plane); color:var(--ink);
+    font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1140px;margin:0 auto;padding:32px 16px 64px}
+
+  header{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+  h1{font-size:23px;line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+  .lede{color:var(--ink-2);margin:0;max-width:58ch}
+  .homelink{font-size:13px;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;white-space:nowrap}
+  .homelink:hover{border-bottom-color:currentColor}
+  .tgl{font:inherit;font-size:12px;color:var(--ink-2);background:var(--card);
+       border:1px solid var(--ring);border-radius:7px;padding:6px 11px;cursor:pointer}
+  .tgl:hover{color:var(--ink)}
+  .head-right{display:flex;gap:10px;align-items:center}
+
+  .hero{display:flex;flex-wrap:wrap;gap:28px;margin:26px 0 22px;
+        padding:18px 20px;background:var(--card);border:1px solid var(--ring);border-radius:12px}
+  .stat .v{font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+  .stat .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;margin-top:5px}
+  .stat .v small{font-size:15px;font-weight:600;color:var(--ink-2)}
+
+  .filters{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;
+           padding:16px 20px;background:var(--card);border:1px solid var(--ring);
+           border-radius:12px;margin-bottom:22px}
+  .f{display:flex;flex-direction:column;gap:7px;min-width:190px}
+  .f label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em}
+  .f .row{display:flex;align-items:center;gap:11px}
+  .f output{font-variant-numeric:tabular-nums;font-weight:700;font-size:14px;min-width:2.4em}
+  input[type=range]{accent-color:var(--accent);width:130px}
+  .reset{font:inherit;font-size:12px;padding:7px 13px;border-radius:7px;cursor:pointer;
+         background:transparent;color:var(--ink-2);border:1px solid var(--ring)}
+  .reset:hover{color:var(--ink)}
+
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) 352px;gap:22px;align-items:start}
+  @media (max-width:880px){.cols{grid-template-columns:minmax(0,1fr)}}
+
+  .card{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:18px 20px 20px}
+  .card h2{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);
+           margin:0 0 4px;font-weight:600}
+  .card .cap{font-size:12.5px;color:var(--ink-2);margin:0 0 16px}
+
+  .blist{display:flex;flex-direction:column;gap:15px}
+  .brow .t{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .brow .nm{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .brow .pc{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .track{height:7px;border-radius:4px;background:var(--grid);overflow:hidden}
+  .bar{height:7px;border-radius:4px;display:block;min-width:2px;
+       transition:width .35s cubic-bezier(.2,.7,.3,1)}
+  .brow .sub{font-size:11.5px;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+  .sw{display:inline-block;width:10px;height:10px;border-radius:3px;flex:none}
+
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  #matrix{max-width:430px;margin:4px auto 0}
+  .cellg rect{transition:fill .3s ease, opacity .2s ease; cursor:default}
+  .cellg:hover rect.c{stroke:var(--ink);stroke-width:2}
+  .cn{font:600 11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#fff;pointer-events:none}
+  .cn.dim{fill:rgba(255,255,255,.55)}
+  .ax{font:500 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:var(--muted)}
+  .axt{font:600 10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:var(--muted);letter-spacing:.12em}
+
+  .tip{position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;
+       background:var(--card);border:1px solid var(--ring);border-radius:9px;
+       padding:9px 12px;font-size:12.5px;line-height:1.5;z-index:9;
+       box-shadow:0 6px 22px rgba(0,0,0,.14);max-width:230px}
+  .tip b{display:block;margin-bottom:3px;font-size:12px}
+  .tip i{font-style:normal;color:var(--muted)}
+
+  pre{background:var(--code);border:1px solid var(--ring);border-radius:10px;
+      padding:15px 17px;overflow:auto;margin:0;
+      font:12.5px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink-2)}
+  pre .kw{color:var(--accent);font-weight:600}
+  pre .num{color:var(--s5);font-weight:600}
+  pre .cm{color:var(--muted);font-style:italic}
+  .sqlhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+  .copy{font:inherit;font-size:11.5px;padding:5px 11px;border-radius:7px;cursor:pointer;
+        background:transparent;color:var(--ink-2);border:1px solid var(--ring)}
+  .copy:hover{color:var(--ink)}
+
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:12px;color:var(--ink-2)}
+  .legend span{display:flex;align-items:center;gap:7px}
+
+  footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--grid);
+         font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 18px}
+  footer a{color:var(--accent);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .note{margin-top:22px;font-size:12.5px;color:var(--muted);max-width:76ch}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>RFM segmentation, with the cut-offs in your hands</h1>
+      <p class="lede">Every threshold in the query is a parameter. Move one and watch the grid, the revenue
+         split and the SQL change together — the point of writing it that way.</p>
+    </div>
+    <div class="head-right">
+      <a class="homelink" href="https://github.com/nhmTri/rfm-segmentation-sql">repository ↗</a>
+      <button class="tgl" id="theme" type="button">dark</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="stat"><div class="v" id="hChamp">—</div><div class="k">customers in Champions</div></div>
+    <div class="stat"><div class="v" id="hUplift">—</div><div class="k">Champions AOV vs the rest</div></div>
+    <div class="stat"><div class="v" id="hTop2">—</div><div class="k">revenue in the top two bands</div></div>
+    <div class="stat"><div class="v" id="hRisk">—</div><div class="k">revenue sitting in At risk</div></div>
+  </div>
+
+  <div class="filters">
+    <div class="f">
+      <label for="rc">Champion needs recency band ≥</label>
+      <div class="row"><input type="range" id="rc" min="2" max="5" step="1" value="4"><output id="rcv">4</output></div>
+    </div>
+    <div class="f">
+      <label for="fc">…and frequency band ≥</label>
+      <div class="row"><input type="range" id="fc" min="2" max="5" step="1" value="4"><output id="fcv">4</output></div>
+    </div>
+    <div class="f">
+      <label for="ac">At risk when recency band ≤</label>
+      <div class="row"><input type="range" id="ac" min="1" max="3" step="1" value="2"><output id="acv">2</output></div>
+    </div>
+    <div class="f">
+      <label for="n">Customers in the sample</label>
+      <div class="row"><input type="range" id="n" min="120" max="900" step="60" value="480"><output id="nv">480</output></div>
+    </div>
+    <button class="reset" id="reset" type="button">reset</button>
+  </div>
+
+  <div class="cols">
+    <div class="card">
+      <h2>The grid</h2>
+      <p class="cap">One cell per recency × frequency band. The number is how many customers landed there —
+         colour is the segment the rules put them in.</p>
+      <svg id="matrix" viewBox="0 0 516 516" role="img"
+           aria-label="A five by five grid of recency and frequency bands, each cell coloured by customer segment and labelled with its customer count."></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+
+    <div class="card">
+      <h2>Where the money is</h2>
+      <p class="cap">Share of total revenue, not share of customers — the two rarely agree.</p>
+      <div id="tbody" class="blist"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px">
+    <div class="sqlhead">
+      <div>
+        <h2>The query these controls are writing</h2>
+        <p class="cap" style="margin:0">Paste it into Postgres against the sample data in the repo and you get the table above.</p>
+      </div>
+      <button class="copy" id="copy" type="button">copy</button>
+    </div>
+    <pre id="sql"></pre>
+  </div>
+
+  <p class="note">The customers on this page are generated in your browser from a fixed seed — same numbers for
+     everyone, no data leaves the page, nothing real in it. The query is the one in
+     <code>sql/rfm.sql</code>; the CI job runs it against Postgres 16 on every push.</p>
+
+  <footer>
+    <span>Nguyen Hoang Minh Tri</span>
+    <a href="https://github.com/nhmTri/rfm-segmentation-sql">source</a>
+    <a href="https://github.com/nhmTri">github.com/nhmTri</a>
+  </footer>
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------------------------------------------------------- deterministic data
+  function rng(seed){ var s = seed >>> 0;
+    return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+  function build(n){
+    var r = rng(20260401), out = [];
+    for (var i = 0; i < n; i++){
+      // three latent customer types, so the grid is not uniform mush
+      var u = r(), daysAgo, orders, aov;
+      if (u < 0.22){                       // engaged
+        daysAgo = Math.round(1 + r() * 55);
+        orders  = 4 + Math.floor(r() * 14);
+        aov     = 380000 + r() * 280000;
+      } else if (u < 0.62){                // ordinary
+        daysAgo = Math.round(20 + r() * 150);
+        orders  = 2 + Math.floor(r() * 6);
+        aov     = 250000 + r() * 260000;
+      } else {                             // lapsing
+        daysAgo = Math.round(120 + r() * 420);
+        orders  = 1 + Math.floor(r() * 3);
+        aov     = 200000 + r() * 180000;
+      }
+      out.push({ d: daysAgo, f: orders, m: Math.round(orders * aov) });
+    }
+    return out;
+  }
+
+  // NTILE(5), exactly as the window function does it: order, then cut into equal counts
+  function ntile(values, keyFn, asc){
+    var idx = values.map(function(v,i){ return i; });
+    idx.sort(function(a,b){
+      var x = keyFn(values[a]), y = keyFn(values[b]);
+      return asc ? x - y : y - x;
+    });
+    var band = new Array(values.length), n = values.length;
+    for (var p = 0; p < n; p++){
+      band[idx[p]] = Math.min(5, Math.floor(p * 5 / n) + 1);
+    }
+    return band;
+  }
+
+  // ------------------------------------------------------------------- segments
+  var SEG = [
+    { id:'champ', name:'Champions',      v:'--s1' },
+    { id:'loyal', name:'Loyal',          v:'--s2' },
+    { id:'pot',   name:'Potential',      v:'--s3' },
+    { id:'need',  name:'Need attention', v:'--s4' },
+    { id:'risk',  name:'At risk',        v:'--s5' }
+  ];
+
+  function classify(R, F, rc, fc, ac){
+    if (R >= rc && F >= fc)          return 'champ';
+    if (R >= rc - 1 && F >= fc - 1)  return 'loyal';
+    if (R <= ac && F >= 3)           return 'risk';
+    if (R <= ac)                     return 'need';
+    return 'pot';
+  }
+
+  // ------------------------------------------------------------------- elements
+  var $ = function(id){ return document.getElementById(id); };
+  var elRc = $('rc'), elFc = $('fc'), elAc = $('ac'), elN = $('n');
+  var svg = $('matrix'), tip = $('tip');
+  var SVGNS = 'http://www.w3.org/2000/svg';
+
+  var vndFmt = new Intl.NumberFormat('en-US');
+  function vnd(x){ return vndFmt.format(Math.round(x)) + ' ₫'; }
+  function pct(x){ return (x * 100).toFixed(1) + '%'; }
+
+  // ----------------------------------------------------------------- the render
+  var cache = { n: -1, rows: null };
+
+  function compute(){
+    var n = +elN.value;
+    if (cache.n !== n){ cache.n = n; cache.rows = build(n); }
+    var rows = cache.rows;
+
+    var rb = ntile(rows, function(c){ return c.d; }, false); // most recent -> band 5
+    var fb = ntile(rows, function(c){ return c.f; }, true);
+    var rc = +elRc.value, fc = +elFc.value, ac = +elAc.value;
+
+    var cells = {}, segs = {};
+    SEG.forEach(function(s){ segs[s.id] = { n:0, rev:0, orders:0 }; });
+
+    var total = 0;
+    for (var i = 0; i < rows.length; i++){
+      var R = rb[i], F = fb[i];
+      var sid = classify(R, F, rc, fc, ac);
+      var k = R + ':' + F;
+      if (!cells[k]) cells[k] = { n:0, rev:0, orders:0, seg:sid };
+      cells[k].n++; cells[k].rev += rows[i].m; cells[k].orders += rows[i].f;
+      cells[k].seg = sid;
+      segs[sid].n++; segs[sid].rev += rows[i].m; segs[sid].orders += rows[i].f;
+      total += rows[i].m;
+    }
+    return { cells:cells, segs:segs, total:total, n:rows.length, rc:rc, fc:fc, ac:ac };
+  }
+
+  function drawMatrix(st){
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var X0 = 54, Y0 = 14, C = 80, G = 8;
+
+    for (var F = 5; F >= 1; F--){
+      for (var R = 1; R <= 5; R++){
+        var col = R - 1, row = 5 - F;
+        var x = X0 + col * (C + G), y = Y0 + row * (C + G);
+        var c = st.cells[R + ':' + F] || { n:0, rev:0, orders:0, seg: classify(R,F,st.rc,st.fc,st.ac) };
+
+        var g = document.createElementNS(SVGNS, 'g');
+        g.setAttribute('class', 'cellg');
+
+        var rect = document.createElementNS(SVGNS, 'rect');
+        rect.setAttribute('class', 'c');
+        rect.setAttribute('x', x); rect.setAttribute('y', y);
+        rect.setAttribute('width', C); rect.setAttribute('height', C);
+        rect.setAttribute('rx', 7);
+        var meta = SEG.filter(function(s){ return s.id === c.seg; })[0];
+        rect.setAttribute('fill', 'var(' + meta.v + ')');
+        rect.setAttribute('opacity', c.n === 0 ? .16 : .92);
+        g.appendChild(rect);
+
+        var t = document.createElementNS(SVGNS, 'text');
+        t.setAttribute('class', 'cn' + (c.n === 0 ? ' dim' : ''));
+        t.setAttribute('x', x + C / 2); t.setAttribute('y', y + C / 2 + 4);
+        t.setAttribute('text-anchor', 'middle');
+        t.textContent = c.n;
+        g.appendChild(t);
+
+        (function(cell, Rv, Fv, nm){
+          g.addEventListener('mouseenter', function(e){ show(e, cell, Rv, Fv, nm); });
+          g.addEventListener('mousemove',  function(e){ move(e); });
+          g.addEventListener('mouseleave', hide);
+        })(c, R, F, meta.name);
+
+        svg.appendChild(g);
+      }
+    }
+
+    // axes: ticks, then the two axis titles
+    for (var i = 0; i < 5; i++){
+      var ty = document.createElementNS(SVGNS, 'text');
+      ty.setAttribute('class','ax');
+      ty.setAttribute('x', X0 - 12); ty.setAttribute('y', Y0 + i * (C + G) + C / 2 + 4);
+      ty.setAttribute('text-anchor','end'); ty.textContent = 5 - i;
+      svg.appendChild(ty);
+
+      var tx = document.createElementNS(SVGNS, 'text');
+      tx.setAttribute('class','ax');
+      tx.setAttribute('x', X0 + i * (C + G) + C / 2); tx.setAttribute('y', Y0 + 5 * (C + G) + 16);
+      tx.setAttribute('text-anchor','middle'); tx.textContent = i + 1;
+      svg.appendChild(tx);
+    }
+    var yl = document.createElementNS(SVGNS, 'text');
+    yl.setAttribute('class','axt');
+    yl.setAttribute('x', 16); yl.setAttribute('y', Y0 + 2.5 * (C + G));
+    yl.setAttribute('text-anchor','middle');
+    yl.setAttribute('transform', 'rotate(-90 16 ' + (Y0 + 2.5 * (C + G)) + ')');
+    yl.textContent = 'FREQUENCY'; svg.appendChild(yl);
+
+    var xl = document.createElementNS(SVGNS, 'text');
+    xl.setAttribute('class','axt');
+    xl.setAttribute('x', X0 + 2.5 * (C + G)); xl.setAttribute('y', Y0 + 5 * (C + G) + 36);
+    xl.setAttribute('text-anchor','middle'); xl.textContent = 'RECENCY';
+    svg.appendChild(xl);
+  }
+
+  function show(e, c, R, F, name){
+    var aov = c.orders ? c.rev / c.orders : 0;
+    tip.innerHTML = '<b>' + name + '</b>' +
+      '<i>recency band ' + R + ' · frequency band ' + F + '</i><br>' +
+      c.n + ' customer' + (c.n === 1 ? '' : 's') + '<br>' +
+      'revenue ' + vnd(c.rev) + '<br>' +
+      'avg order ' + (c.orders ? vnd(aov) : '—');
+    tip.style.opacity = 1; move(e);
+  }
+  function move(e){
+    var pad = 16, w = tip.offsetWidth, h = tip.offsetHeight;
+    var x = e.clientX + pad, y = e.clientY + pad;
+    if (x + w > innerWidth  - 8) x = e.clientX - w - pad;
+    if (y + h > innerHeight - 8) y = e.clientY - h - pad;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hide(){ tip.style.opacity = 0; }
+
+  function drawTable(st){
+    var tb = $('tbody'); tb.innerHTML = '';
+    SEG.forEach(function(s){
+      var d = st.segs[s.id];
+      var share = st.total ? d.rev / st.total : 0;
+      var aov = d.orders ? d.rev / d.orders : 0;
+      var row = document.createElement('div');
+      row.className = 'brow';
+      row.innerHTML =
+        '<div class="t"><span class="nm"><span class="sw" style="background:var(' + s.v + ')"></span>' +
+          s.name + '</span><span class="pc">' + pct(share) + '</span></div>' +
+        '<div class="track"><span class="bar" style="width:' + (share * 100).toFixed(1) +
+          '%;background:var(' + s.v + ')"></span></div>' +
+        '<div class="sub">' + d.n + ' customers · avg order ' + (d.orders ? vnd(aov) : '—') + '</div>';
+      tb.appendChild(row);
+    });
+
+    var lg = $('legend'); lg.innerHTML = '';
+    SEG.forEach(function(s){
+      var el = document.createElement('span');
+      el.innerHTML = '<span class="sw" style="background:var(' + s.v + ')"></span>' + s.name;
+      lg.appendChild(el);
+    });
+  }
+
+  function drawHero(st){
+    var ch = st.segs.champ, lo = st.segs.loyal;
+    var champAov = ch.orders ? ch.rev / ch.orders : 0;
+    var restRev = st.total - ch.rev;
+    var restOrd = 0;
+    SEG.forEach(function(s){ if (s.id !== 'champ') restOrd += st.segs[s.id].orders; });
+    var restAov = restOrd ? restRev / restOrd : 0;
+    var up = restAov ? (champAov / restAov - 1) : 0;
+
+    $('hChamp').innerHTML = ch.n + ' <small>of ' + st.n + '</small>';
+    $('hUplift').innerHTML = (up >= 0 ? '+' : '') + (up * 100).toFixed(0) + '%';
+    $('hTop2').textContent = pct(st.total ? (ch.rev + lo.rev) / st.total : 0);
+    $('hRisk').textContent = pct(st.total ? st.segs.risk.rev / st.total : 0);
+  }
+
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function drawSql(st){
+    var raw =
+'-- every cut-off below is a parameter, not a magic number\n' +
+'with params as (\n' +
+'  select ' + st.rc + '::int as champion_r,\n' +
+'         ' + st.fc + '::int as champion_f,\n' +
+'         ' + st.ac + '::int as at_risk_r\n' +
+'),\n' +
+'scored as (\n' +
+'  select customer_id,\n' +
+'         ntile(5) over (order by last_order_at)          as r,\n' +
+'         ntile(5) over (order by order_count)            as f,\n' +
+'         ntile(5) over (order by revenue)                as m,\n' +
+'         revenue, order_count\n' +
+'  from   customer_orders\n' +
+')\n' +
+'select case\n' +
+'         when r >= p.champion_r     and f >= p.champion_f     then \'Champions\'\n' +
+'         when r >= p.champion_r - 1 and f >= p.champion_f - 1 then \'Loyal\'\n' +
+'         when r <= p.at_risk_r      and f >= 3                then \'At risk\'\n' +
+'         when r <= p.at_risk_r                                then \'Need attention\'\n' +
+'         else \'Potential\'\n' +
+'       end                                      as segment,\n' +
+'       count(*)                                 as customers,\n' +
+'       sum(revenue)                             as revenue,\n' +
+'       round(sum(revenue) / sum(order_count))   as avg_order_value\n' +
+'from   scored, params p\n' +
+'group  by 1\n' +
+'order  by revenue desc;';
+
+    var html = esc(raw)
+      .replace(/^(--.*)$/gm, '<span class="cm">$1</span>')
+      .replace(/\b(with|as|select|from|group|order|by|case|when|then|else|end|count|sum|round|over|int|and|desc|ntile)\b/g,
+               '<span class="kw">$1</span>')
+      .replace(/(?<![\w-])(\d+)(?![\w%])/g, '<span class="num">$1</span>');
+    $('sql').innerHTML = html;
+    $('sql').dataset.raw = raw;
+  }
+
+  function render(){
+    $('rcv').value = elRc.value; $('fcv').value = elFc.value;
+    $('acv').value = elAc.value; $('nv').value  = elN.value;
+    var st = compute();
+    drawMatrix(st); drawTable(st); drawHero(st); drawSql(st);
+  }
+
+  [elRc, elFc, elAc, elN].forEach(function(el){
+    el.addEventListener('input', render);
+  });
+  $('reset').addEventListener('click', function(){
+    elRc.value = 4; elFc.value = 4; elAc.value = 2; elN.value = 480; render();
+  });
+  $('copy').addEventListener('click', function(){
+    var btn = this, raw = $('sql').dataset.raw || '';
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(raw).then(function(){
+        btn.textContent = 'copied'; setTimeout(function(){ btn.textContent = 'copy'; }, 1400);
+      }, function(){ btn.textContent = 'select it manually'; });
+    } else { btn.textContent = 'select it manually'; }
+  });
+
+  var tgl = $('theme');
+  function applyTheme(t){
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    else   document.documentElement.removeAttribute('data-theme');
+    var darkNow = t === 'dark' ||
+      (!t && matchMedia('(prefers-color-scheme: dark)').matches);
+    tgl.textContent = darkNow ? 'light' : 'dark';
+  }
+  tgl.addEventListener('click', function(){
+    var cur = document.documentElement.getAttribute('data-theme');
+    var darkNow = cur === 'dark' ||
+      (!cur && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = darkNow ? 'light' : 'dark';
+    applyTheme(next);
+    try { localStorage.setItem('rfm-theme', next); } catch (e) {}
+  });
+  try { applyTheme(localStorage.getItem('rfm-theme')); } catch (e) { applyTheme(null); }
+
+  render();
+})();
+</script>
+</body>
+</html>

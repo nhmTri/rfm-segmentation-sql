@@ -4,9 +4,16 @@
 ![Parameterised](https://img.shields.io/badge/cut--offs-parameterised-1F7A5A?style=flat-square)
 ![Runnable](https://img.shields.io/badge/runs-out%20of%20the%20box-1F7A5A?style=flat-square)
 [![sql](https://github.com/nhmTri/rfm-segmentation-sql/actions/workflows/sql-tests.yml/badge.svg)](https://github.com/nhmTri/rfm-segmentation-sql/actions/workflows/sql-tests.yml)
+[![live demo](https://img.shields.io/badge/live%20demo-drag%20the%20cut--offs-184F95?style=flat-square&logo=githubpages&logoColor=white)](https://nhmtri.github.io/rfm-segmentation-sql/)
 ![Licence](https://img.shields.io/badge/licence-MIT-8892A6?style=flat-square)
 
 <img src="assets/rfm-matrix.svg" alt="RFM matrix with named segments" width="100%">
+
+> ### ▶ [Drag the cut-offs yourself](https://nhmtri.github.io/rfm-segmentation-sql/)
+>
+> The claim below is that parameterised boundaries are worth the trouble. The demo is where
+> you check it: move a cut-off and the grid recolours, the revenue split moves, and **the SQL
+> rewrites itself underneath** so you can see which line you just changed.
 
 Recency–Frequency–Monetary scoring on a retail customer base, written so that **every cut-off is a parameter** and the whole rule set re-runs on new data without editing logic.
 
@@ -44,6 +51,8 @@ orders ──▶ customer_base ──▶ rfm_raw ──▶ rfm_scored ──▶ 
 make run     # load the synthetic sample, print the segments
 make test    # run the query and diff against tests/expected_segments.csv
 ```
+
+Or skip the install and [open the demo](https://nhmtri.github.io/rfm-segmentation-sql/) — same query, same scoring, sliders instead of a `params` CTE.
 
 Or directly:
 

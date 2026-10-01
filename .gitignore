@@ -34,3 +34,6 @@ Thumbs.db
 .env
 *.pem
 credentials*.json
+
+# the CI job diffs the query output against this fixture
+!tests/expected_segments.csv
